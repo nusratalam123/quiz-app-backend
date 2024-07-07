@@ -33,3 +33,34 @@ export const saveResult = async (req: Request, res: Response) => {
     res.status(500).send("Server error");
   }
 };
+
+// update Quiz
+export const updateQuiz = async (req: Request, res: Response) => {
+  try {
+    const quiz=await Quiz.findByIdAndUpdate(req.params.id, req.body);
+
+    res.status(200).json({
+      message: "Quiz updated successfully",
+      data:quiz,
+    });
+  } catch (err: any) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
+
+// delete Quiz
+export const deleteQuiz = async (req: Request, res: Response) => {
+  try {
+    await Quiz.findByIdAndDelete(req.params.id);
+
+    res.status(200).json({
+      message: "Quiz Deleted Successfully",
+    });
+  } catch (err: any) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
