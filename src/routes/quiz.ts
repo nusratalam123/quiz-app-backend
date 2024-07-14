@@ -10,9 +10,9 @@ import { auth } from "../middleware/auth";
 
 const router = Router();
 
-router.post("/", auth, createQuiz);
+router.post("/", auth,createQuiz);
 router.get("/", getQuizzes);
-router.post("/", auth, saveResult);
+router.post("/", auth,saveResult);
 // update Quiz
 router.patch("/update/:id",auth, updateQuiz);
 
